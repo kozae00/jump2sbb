@@ -62,9 +62,17 @@ class Jump2sbbApplicationTests {
 
 	@Test
 	@DisplayName("findBySubjectAndContent - subject와 content를 AND로 탐색")
-	void testJpa() {
+	void testJpa5() {
 		Question q = this.questionRepository.findBySubjectAndContent(
 				"sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
 		assertEquals(1, q.getId());
+	}
+
+	@Test
+	@DisplayName("findByLike - 특정 문자열이 포함된 데이터 탐색")
+	void testJpa6() {
+		List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
+		Question q = qList.get(0);
+		assertEquals("sbb가 무엇인가요?", q.getSubject());
 	}
 }
