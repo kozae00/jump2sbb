@@ -18,6 +18,9 @@ class Jump2sbbApplicationTests {
 	@Autowired
 	private QuestionRepository questionRepository;
 
+	@Autowired
+	private  AnswerRepository answerRepository;
+
 	@Test
 	@DisplayName("질문 생성")
 	void testJpa1() {
@@ -96,5 +99,20 @@ class Jump2sbbApplicationTests {
 		Question q = oq.get();
 		this.questionRepository.delete(q);
 		assertEquals(1, this.questionRepository.count());
+	}
+
+
+	@Test
+	@DisplayName("save to Answer")
+	void testJpa9() {
+		Optional<Question> oq = this.questionRepository.findById(2);
+		assertTrue(oq.isPresent());
+		Question q = oq.get();
+
+		Answer a = new Answer();
+		a.setContent("네 자동으로 생성됩니다.");
+		a.setQuestion(q);  // 어떤 질문의 답변인지 알기위해서 Question 객체가 필요하다.
+		a.setCreateDate(LocalDateTime.now());
+		this.answerRepository.save(a);
 	}
 }
