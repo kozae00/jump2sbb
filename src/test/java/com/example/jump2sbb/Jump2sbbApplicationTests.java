@@ -60,4 +60,11 @@ class Jump2sbbApplicationTests {
 		assertEquals(1, q.getId());
 	}
 
+	@Test
+	@DisplayName("findBySubjectAndContent - subject와 content를 AND로 탐색")
+	void testJpa() {
+		Question q = this.questionRepository.findBySubjectAndContent(
+				"sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
+		assertEquals(1, q.getId());
+	}
 }
