@@ -103,7 +103,7 @@ class Jump2sbbApplicationTests {
 
 
 	@Test
-	@DisplayName("save to Answer")
+	@DisplayName("save - Answer")
 	void testJpa9() {
 		Optional<Question> oq = this.questionRepository.findById(2);
 		assertTrue(oq.isPresent());
@@ -114,5 +114,14 @@ class Jump2sbbApplicationTests {
 		a.setQuestion(q);  // 어떤 질문의 답변인지 알기위해서 Question 객체가 필요하다.
 		a.setCreateDate(LocalDateTime.now());
 		this.answerRepository.save(a);
+	}
+
+	@Test
+	@DisplayName("findById - Answer")
+	void testJpa() {
+		Optional<Answer> oa = this.answerRepository.findById(1);
+		assertTrue(oa.isPresent());
+		Answer a = oa.get();
+		assertEquals(2, a.getQuestion().getId());
 	}
 }
