@@ -1,5 +1,9 @@
 package com.example.jump2sbb;
 
+import com.example.jump2sbb.answer.Answer;
+import com.example.jump2sbb.answer.AnswerRepository;
+import com.example.jump2sbb.question.Question;
+import com.example.jump2sbb.question.QuestionRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +24,7 @@ class Jump2sbbApplicationTests {
 	private QuestionRepository questionRepository;
 
 	@Autowired
-	private  AnswerRepository answerRepository;
+	private AnswerRepository answerRepository;
 
 	@Test
 	@DisplayName("질문 생성")

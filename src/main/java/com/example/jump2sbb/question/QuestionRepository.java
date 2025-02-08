@@ -1,4 +1,4 @@
-package com.example.jump2sbb;
+package com.example.jump2sbb.question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
